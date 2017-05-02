@@ -8,9 +8,9 @@ class GlobalSetting(object):
     """ Bind to CommAdminView """
     site_title = u"UESTC物业管理页面"
     site_footer = u"程彦衡支持开发"
-    apps_label_title = {
-        'auth': u'用户管理',
-    }
+    # apps_label_title = {
+    #     'auth': u'用户管理',
+    # }
 
     def remove_origin(self, menus, dbtable):
         """ remove dbtable from origin menu """
