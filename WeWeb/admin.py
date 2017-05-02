@@ -27,3 +27,12 @@ class BaseSetting(object):
     """ Bind to BaseAdminView """
     enable_themes = True
     use_bootswatch = True
+
+
+class TestAdmin(object):
+    pass
+
+
+xadmin.site.register(CommAdminView, GlobalSetting)
+xadmin.site.register(BaseAdminView, BaseSetting)
+xadmin.site.register(Test, TestAdmin)
