@@ -4,4 +4,5 @@ from WeWeb import views
 
 urlpatterns = [
     url(r'^$', views.index),
+    url(r'access/$', views.server_access),
 ]
