@@ -34,7 +34,7 @@ def server_access(request):
 
 @require_GET
 def authorize(request):
-    print request.body
+    print request.user.username
     code = request.GET.get('code', '')
     state = request.GET.get('state', '')
     appid = config.wxAppID
