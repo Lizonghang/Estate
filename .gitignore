@@ -4,3 +4,4 @@ db.sqlite3
 .idea
 WeWeb/migrations/*
 Estate/settings.py
+WeWeb/config.py
