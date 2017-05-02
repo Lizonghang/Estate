@@ -34,7 +34,6 @@ def server_access(request):
 
 @require_GET
 def authorize(request):
-    print request.user.username
     code = request.GET.get('code', '')
     state = request.GET.get('state', '')
     appid = config.wxAppID
@@ -68,5 +67,4 @@ def authorize(request):
     for key in params.keys():
         url = url + '{key}={value}'.format(key=key, value=params[key]) + '&'
     url = url[:-1]
-    print u'Redirect to url: ', url
     return HttpResponseRedirect(url)
