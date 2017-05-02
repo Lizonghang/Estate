@@ -5,3 +5,4 @@ db.sqlite3
 WeWeb/migrations/*
 Estate/settings.py
 WeWeb/config.py
+dist/*
