@@ -16,35 +16,43 @@ def get_menu():
 
 def create_menu():
     api = 'https://api.weixin.qq.com/cgi-bin/menu/create?access_token=' + get_access_token()
-    index = config.authorize_uri % 'url=https://www.elongway.com/#/'.replace('#', '')
+    index = config.authorize_uri % 'url=http://www.desckie.com/#/'.replace('#', '')
+    fix = config.authorize_uri % 'url=http://www.desckie.com/#/Need-fix'.replace('#', '')
+    pay = config.authorize_uri % 'url=http://www.desckie.com/#/Pay'.replace('#', '')
+    message = config.authorize_uri % 'url=http://www.desckie.com/#/Message'.replace('#', '')
+
     menu = """{
         "button": [
             {
+                "url": "%s",
                 "type": "view",
-                "name": "合同实用指南",
-                "url": "%s"
-            }, {
-                "type": "view",
-                "name": "律师诉讼须知",
-                "url": "%s"
-            }, {
-                "name": "用户导航",
+                "name": "小区首页"
+            },
+            {
+                "name": "快捷服务",
                 "sub_button": [
                     {
+                        "url": "%s",
                         "type": "view",
-                        "name": "微信网站",
-                        "url": "%s"
-                    }, {
-                        "type": "view",
-                        "name": "关于我们",
-                        "url": "%s"
-                    }, {
+                        "name": "物业报修"
+                    },
+                    {
                         "type": "click",
-                        "name": "在线客服",
-                        "key": "customer"
+                        "name": "访客预约",
+                        "key": "fangkeyuyue"
+                    },
+                    {
+                        "url": "%s",
+                        "type": "view",
+                        "name": "物业缴费"
+                    },
+                    {
+                        "url": "%s",
+                        "type": "view",
+                        "name": "留言板"
                     }
                 ]
             }
         ]
-    }"""
+    }""" % (index, fix, pay, message)
     print requests.post(api, menu).text
