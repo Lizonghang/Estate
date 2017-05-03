@@ -140,3 +140,52 @@ POST http://www.desckie.com/api/weweb/pay/
 #### 错误类型
 
 * 当月没有待缴费的费用
+
+## 待租借场地列表
+
+#### API
+```
+GET http://www.desckie.com/api/weweb/list/place/
+```
+
+#### 返回数据
+```
+{
+  "data": [
+    {
+      "member": 4,
+      "place": "羽毛球场1号场地"
+    },
+    {
+      "member": 4,
+      "place": "羽毛球场2号场地"
+    },
+    {
+      "member": 4,
+      "place": "羽毛球场3号场地"
+    },
+    {
+      "member": 4,
+      "place": "网球场1号场地"
+    },
+    {
+      "member": 4,
+      "place": "网球场2号场地"
+    },
+    {
+      "member": 4,
+      "place": "棋牌室401"
+    },
+    {
+      "member": 10,
+      "place": "棋牌室402"
+    },
+    {
+      "member": 15,
+      "place": "棋牌室403"
+    }
+  ],
+  "err": 0
+}
+```
+
