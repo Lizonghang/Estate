@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'payinfo/$', views.payinfo),
     url(r'pay/$', views.pay),
     url(r'rent/$', views.rent),
+    url(r'drinkorder/$', views.drinkorder),
     url(r'list/', include(list_map)),
     url(r'test/', include(test_map)),
     url(r'login_require/$', views.login_require),

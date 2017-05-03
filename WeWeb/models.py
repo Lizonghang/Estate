@@ -203,7 +203,9 @@ class Drink(models.Model):
 
 class DrinkOrder(models.Model):
     drink = models.ForeignKey(Drink, verbose_name="饮品类型")
+    user = models.ForeignKey(User, verbose_name="下单用户")
     loc = models.CharField("配送地址", max_length=100, default='')
+    state = models.BooleanField("已送达", default=False)
 
     def __str__(self):
         return self.drink.name

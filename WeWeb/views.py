@@ -186,3 +186,20 @@ def refresh_place(request):
 def drinks(request):
     drink_info = [item.get_base_info() for item in Drink.objects.all()]
     return JsonResponse({'err': 0, 'data': drink_info})
+
+
+@login_required
+@require_POST
+def drinkorder(request):
+    params = request.POST
+    name = params.get('name')
+    loc = params.get('loc')
+    user = request.user
+
+    try:
+        drink = Drink.objects.get(name=name)
+    except ObjectDoesNotExist:
+        return JsonResponse({'err': 1, 'msg': u'该饮品未销售'})
+
+    DrinkOrder.objects.create(user=user, drink=drink, loc=loc)
+    return JsonResponse({'err': 0})
