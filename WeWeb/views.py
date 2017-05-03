@@ -1,4 +1,5 @@
 # coding=utf-8
+from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse, HttpResponse, HttpResponseRedirect
 from django.views.decorators.http import require_GET, require_POST
 from WXMsgHandler import WXMsgHandler
@@ -10,7 +11,7 @@ import requests
 
 
 def handler500(request):
-    return JsonResponse({'err': 1, 'msg': u'未知错误,请检查数据提交方法和参数是否正确'})
+    return JsonResponse({'err': 1, 'msg': u'请检查数据提交方法和参数是否正确'})
 
 
 def index(request):
@@ -68,3 +69,16 @@ def authorize(request):
         url = url + '{key}={value}'.format(key=key, value=params[key]) + '&'
     url = url[:-1]
     return HttpResponseRedirect(url)
+
+
+@login_required
+@require_POST
+def repair(request):
+    params = request.POST
+    loc = params.get('loc')
+    desc = params.get('desc')
+    user = request.user
+
+    Repair.objects.create(user=user, loc=loc, desc=desc)
+
+    return JsonResponse({'err': 0})
