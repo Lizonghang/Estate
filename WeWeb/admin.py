@@ -8,9 +8,10 @@ class GlobalSetting(object):
     """ Bind to CommAdminView """
     site_title = u"UESTC物业管理页面"
     site_footer = u"程彦衡支持开发"
-    # apps_label_title = {
-    #     'auth': u'用户管理',
-    # }
+    apps_label_title = {
+        'auth': u'用户管理',
+        'weweb': u'物业报修',
+    }
 
     def remove_origin(self, menus, dbtable):
         """ remove dbtable from origin menu """
@@ -29,10 +30,10 @@ class BaseSetting(object):
     use_bootswatch = True
 
 
-class TestAdmin(object):
+class RepairAdmin(object):
     pass
 
 
 xadmin.site.register(CommAdminView, GlobalSetting)
 xadmin.site.register(BaseAdminView, BaseSetting)
-xadmin.site.register(Test, TestAdmin)
+xadmin.site.register(Repair, RepairAdmin)
