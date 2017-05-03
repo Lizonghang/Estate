@@ -230,7 +230,7 @@ class LoseAndFound(models.Model):
             'name': self.name,
             'desc': self.desc,
             'date': self.date.strftime('%Y-%m-%d'),
-            'image': os.path.join(settings.MEDIA_ROOT, 'images', self.image.path.split('/')[-1])
+            'image': 'http://www.desckie.com/' + os.path.join(settings.MEDIA_ROOT, 'images', self.image.path.split('/')[-1])
         }
 
     def __str__(self):
