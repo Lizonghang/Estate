@@ -224,7 +224,7 @@ class LoseAndFound(models.Model):
     desc = models.TextField("描述", default='')
     date = models.DateField("发表时间", default=default_time_now)
     image = models.ImageField("物品图片", upload_to='images',
-                              default=os.path.join(settings.MEDIA_ROOT, 'images', 'default.jpg'))
+                              default=os.path.join('/', settings.MEDIA_ROOT, 'images', 'default.jpg'))
     state = models.BooleanField("已认领", default=False)
 
     def get_base_info(self):

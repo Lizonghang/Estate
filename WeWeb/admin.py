@@ -196,27 +196,39 @@ class PaymentAdmin(object):
 
 
 class UserInfoAdmin(object):
-    pass
+    list_display = ('user', 'name', 'room', 'area', 'park')
+    list_editable = ('name', 'room', 'area', 'park')
+    list_filter = ('user', 'name', 'room')
 
 
 class RentAdmin(object):
-    pass
+    list_display = ('place', 'member', 'user', 'rented')
+    list_editable = ('user', 'rented')
+    list_filter = ('place', 'rented')
 
 
 class DrinkAdmin(object):
-    pass
+    list_display = ('name', 'price')
+    list_editable = ('name', 'price')
+    list_filter = ('name',)
 
 
 class DrinkOrderAdmin(object):
-    pass
+    list_display = ('user__userinfo__name', 'drink', 'loc', 'state')
+    exclude = ('state',)
+    list_editable = ('state',)
+    list_filter = ('drink', 'state')
 
 
 class LoseAndFoundAdmin(object):
-    pass
+    list_display = ('name', 'desc', 'date', 'state')
+    exclude = ('state',)
+    list_editable = ('name', 'desc', 'state')
+    list_filter = ('name', 'state')
 
 
 class BannerAdmin(object):
-    pass
+    list_display = ('image',)
 
 
 xadmin.site.register(CommAdminView, GlobalSetting)
