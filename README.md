@@ -202,3 +202,26 @@ POST http://www.desckie.com/api/weweb/rent/
 * <code>place</code>: 租借场地名称。
 
 ## 饮品类型查询
+
+#### API
+```
+GET http://www.desckie.com/api/weweb/list/drink/
+```
+
+#### 返回数据
+
+```
+{
+  "data": [
+    {
+      "price": 15,
+      "name": "11.5L农夫山泉"
+    },
+    {
+      "price": 20,
+      "name": "17L农夫山泉"
+    }
+  ],
+  "err": 0
+}
+```
