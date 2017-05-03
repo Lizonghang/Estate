@@ -187,6 +187,12 @@ class Drink(models.Model):
     name = models.CharField(u"饮品名称", max_length=50, default='')
     price = models.IntegerField(u"饮品价格", default=0)
 
+    def get_base_info(self):
+        return {
+            'name': self.name,
+            'price': self.price
+        }
+
     def __str__(self):
         return self.name
 
