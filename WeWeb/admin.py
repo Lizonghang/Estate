@@ -69,7 +69,12 @@ class ActivityAdmin(object):
     pass
 
 
+class JoinUserAdmin(object):
+    pass
+
+
 xadmin.site.register(CommAdminView, GlobalSetting)
 xadmin.site.register(BaseAdminView, BaseSetting)
 xadmin.site.register(Repair, RepairAdmin)
 xadmin.site.register(Activity, ActivityAdmin)
+xadmin.site.register(JoinUser, JoinUserAdmin)
