@@ -181,3 +181,27 @@ class Rent(models.Model):
     class Meta:
         verbose_name = '场地租借'
         verbose_name_plural = verbose_name
+
+
+class Drink(models.Model):
+    name = models.CharField(u"饮品名称", max_length=50, default='')
+    price = models.IntegerField(u"饮品价格", default=0)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = '饮品类型'
+        verbose_name_plural = verbose_name
+
+
+class DrinkOrder(models.Model):
+    drink = models.ForeignKey(Drink, verbose_name="饮品类型")
+    loc = models.CharField("配送地址", max_length=100, default='')
+
+    def __str__(self):
+        return self.drink.name
+
+    class Meta:
+        verbose_name = '送水上门'
+        verbose_name_plural = verbose_name

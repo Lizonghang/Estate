@@ -105,6 +105,28 @@ class GlobalSetting(object):
             'first_icon': 'fa fa-book'
         })
         self.remove_origin(menus, u'场地租借')
+        # 模块“送水上门”
+        menus.append({
+            'menus': [
+                {
+                    'url': u'/backend/xadmin/WeWeb/drink/',
+                    'icon': 'fa fa-book',
+                    'order': 1,
+                    'perm': 'WeWeb.view_drink',
+                    'title': u'饮品类型'
+                }, {
+                    'url': u'/backend/xadmin/WeWeb/drinkorder/',
+                    'icon': 'fa fa-book',
+                    'order': 2,
+                    'perm': 'WeWeb.view_drinkorder',
+                    'title': u'送水上门'
+                }],
+            'first_url': u'/backend/xadmin/WeWeb/drinkorder/',
+            'title': u'送水上门',
+            'first_icon': 'fa fa-book'
+        })
+        self.remove_origin(menus, u'饮品类型')
+        self.remove_origin(menus, u'送水上门')
         return menus
 
 
@@ -142,6 +164,14 @@ class RentAdmin(object):
     pass
 
 
+class DrinkAdmin(object):
+    pass
+
+
+class DrinkOrderAdmin(object):
+    pass
+
+
 xadmin.site.register(CommAdminView, GlobalSetting)
 xadmin.site.register(BaseAdminView, BaseSetting)
 xadmin.site.register(Repair, RepairAdmin)
@@ -151,3 +181,5 @@ xadmin.site.register(MessageBoard, MessageBoardAdmin)
 xadmin.site.register(Payment, PaymentAdmin)
 xadmin.site.register(UserInfo, UserInfoAdmin)
 xadmin.site.register(Rent, RepairAdmin)
+xadmin.site.register(Drink, DrinkAdmin)
+xadmin.site.register(DrinkOrder, DrinkOrderAdmin)
