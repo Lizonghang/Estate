@@ -189,3 +189,14 @@ GET http://www.desckie.com/api/weweb/list/place/
 }
 ```
 
+## 场地租借
+
+#### API
+```
+POST http://www.desckie.com/api/weweb/rent/
+```
+
+#### 参数说明
+
+* 要求登录状态
+* <code>place</code>: 租借场地名称。
