@@ -56,4 +56,6 @@ class JoinUser(models.Model):
     activity = models.ForeignKey(Activity, verbose_name="报名活动")
 
     class Meta:
+        verbose_name = '报名情况'
+        verbose_name_plural = verbose_name
         unique_together = (('user', 'activity'),)

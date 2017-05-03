@@ -39,12 +39,19 @@ class GlobalSetting(object):
                     'order': 1,
                     'perm': 'WeWeb.view_activity',
                     'title': u'小区活动'
+                }, {
+                    'url': u'/backend/xadmin/WeWeb/joinuser/',
+                    'icon': 'fa fa-user',
+                    'order': 2,
+                    'perm': 'WeWeb.view_joinuser',
+                    'title': u'报名情况'
                 }],
             'first_url': u'backend/xadmin/WeWeb/activity/',
             'title': u'小区活动',
             'first_icon': 'fa fa-lightbulb-o',
         })
         self.remove_origin(menus, u'小区活动')
+        self.remove_origin(menus, u'报名情况')
         return menus
 
 
