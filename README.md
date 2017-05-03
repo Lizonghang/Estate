@@ -238,3 +238,25 @@ POST http://www.desckie.com/api/weweb/drinkorder/
 * 需要登录状态
 * <code>name</code>: 饮品名称。
 * <code>loc</code>: 配送地址。
+
+## 失物招领列表
+
+#### API
+```
+GET http://www.desckie.com/api/weweb/list/lose/
+```
+
+#### 返回数据
+```
+{
+  "data": [
+    {
+      "date": "2017-05-03",
+      "image": "http://www.desckie.com/source/media/images/u40038617723760317690fm23gp0.jpg",
+      "name": "MacBook Pro",
+      "desc": "一个超贵的mbp"
+    }
+  ],
+  "err": 0
+}
+```
