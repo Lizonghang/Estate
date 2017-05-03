@@ -225,3 +225,16 @@ GET http://www.desckie.com/api/weweb/list/drink/
   "err": 0
 }
 ```
+
+## 创建饮品订单
+
+#### API
+```
+POST http://www.desckie.com/api/weweb/drinkorder/
+```
+
+#### 参数说明
+
+* 需要登录状态
+* <code>name</code>: 饮品名称。
+* <code>loc</code>: 配送地址。
