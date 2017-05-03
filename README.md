@@ -125,3 +125,18 @@ GET http://www.desckie.com/api/weweb/payinfo/
   "err": 0
 }
 ```
+
+## 模拟支付操作
+
+#### API
+```
+POST http://www.desckie.com/api/weweb/pay/
+```
+
+#### 参数说明
+
+* 需要登录状态
+
+#### 错误类型
+
+* 当月没有待缴费的费用
