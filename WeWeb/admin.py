@@ -21,6 +21,15 @@ class GlobalSetting(object):
 
     def get_nav_menu(self):
         menus = super(GlobalSetting, self).get_nav_menu()
+        # 确认AUTH栏和WEWEB栏顺序
+        if menus[0]['title'] != u'用户管理':
+            temp = menus[0]
+            menus[0] = menus[1]
+            menus[1] = temp
+            del temp
+            # 删除AUTH栏“组”与“权限”
+        del menus[0]['menus'][2]
+        del menus[0]['menus'][0]
         return menus
 
 
