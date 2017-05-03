@@ -1,5 +1,6 @@
 # coding=utf-8
 from django.contrib.auth.decorators import login_required
+from django.core.exceptions import ObjectDoesNotExist
 from django.http import JsonResponse, HttpResponse, HttpResponseRedirect
 from django.views.decorators.http import require_GET, require_POST
 from WXMsgHandler import WXMsgHandler
@@ -141,4 +142,10 @@ def payinfo(request):
 @login_required
 @require_POST
 def pay(request):
+    try:
+        pay = request.user.payment_set.get(date=default_month_now())
+    except ObjectDoesNotExist:
+        return JsonResponse({'err': 1, 'msg': u'当月没有待缴费的费用'})
+    pay.paid = True
+    pay.save()
     return JsonResponse({'err': 0})
