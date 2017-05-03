@@ -17,6 +17,7 @@ list_map = [
 urlpatterns = [
     url(r'access/$', views.server_access),
     url(r'authorize/$', views.authorize),
+    url(r'banner/$', views.banner),
     url(r'repair/$', views.repair),
     url(r'join/$', views.join),
     url(r'message/$', views.message),
