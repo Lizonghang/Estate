@@ -144,6 +144,21 @@ class GlobalSetting(object):
             'first_icon': 'fa fa-suitcase'
         })
         self.remove_origin(menus, u'失物招领')
+        # 模块“其他设置”
+        menus.append({
+            'menus': [
+                {
+                    'url': u'/backend/xadmin/WeWeb/banner/',
+                    'icon': 'fa fa-picture-o',
+                    'order': 1,
+                    'perm': 'WeWeb.view_banner',
+                    'title': u'轮播图'
+                }],
+            'first_url': u'/backend/xadmin/WeWeb/banner/',
+            'title': u'其他设置',
+            'first_icon': 'fa fa-cog'
+        })
+        self.remove_origin(menus, u'轮播图')
         return menus
 
 
@@ -193,6 +208,10 @@ class LoseAndFoundAdmin(object):
     pass
 
 
+class BannerAdmin(object):
+    pass
+
+
 xadmin.site.register(CommAdminView, GlobalSetting)
 xadmin.site.register(BaseAdminView, BaseSetting)
 xadmin.site.register(Repair, RepairAdmin)
@@ -205,3 +224,4 @@ xadmin.site.register(Rent, RepairAdmin)
 xadmin.site.register(Drink, DrinkAdmin)
 xadmin.site.register(DrinkOrder, DrinkOrderAdmin)
 xadmin.site.register(LoseAndFound, LoseAndFoundAdmin)
+xadmin.site.register(Banner, BannerAdmin)

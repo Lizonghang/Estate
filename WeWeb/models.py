@@ -239,3 +239,11 @@ class LoseAndFound(models.Model):
     class Meta:
         verbose_name = '失物招领'
         verbose_name_plural = verbose_name
+
+
+class Banner(models.Model):
+    image = models.ImageField("轮播图", upload_to='images')
+
+    class Meta:
+        verbose_name = '轮播图'
+        verbose_name_plural = verbose_name
