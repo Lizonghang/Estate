@@ -27,7 +27,7 @@ class GlobalSetting(object):
             menus[0] = menus[1]
             menus[1] = temp
             del temp
-            # 删除AUTH栏“组”与“权限”
+        # 模块“用户管理”
         del menus[0]['menus'][2]
         del menus[0]['menus'][0]
         menus[0]['menus'].append({
@@ -38,25 +38,27 @@ class GlobalSetting(object):
             'title': u'信息管理',
         })
         self.remove_origin(menus, u'信息管理')
+        # 模块“物业报修”
+        menus[1]['menus'][0]['icon'] = 'fa fa-phone'
         # 模块“小区活动”
         menus.append({
             'menus': [
                 {
                     'url': u'/backend/xadmin/WeWeb/activity/',
-                    'icon': 'fa fa-book',
+                    'icon': 'fa fa-users',
                     'order': 1,
                     'perm': 'WeWeb.view_activity',
                     'title': u'小区活动'
                 }, {
                     'url': u'/backend/xadmin/WeWeb/joinuser/',
-                    'icon': 'fa fa-user',
+                    'icon': 'fa fa-sign-in',
                     'order': 2,
                     'perm': 'WeWeb.view_joinuser',
                     'title': u'报名情况'
                 }],
             'first_url': u'/backend/xadmin/WeWeb/activity/',
             'title': u'小区活动',
-            'first_icon': 'fa fa-lightbulb-o',
+            'first_icon': 'fa fa-users',
         })
         self.remove_origin(menus, u'小区活动')
         self.remove_origin(menus, u'报名情况')
@@ -65,14 +67,14 @@ class GlobalSetting(object):
             'menus': [
                 {
                     'url': u'/backend/xadmin/WeWeb/messageboard/',
-                    'icon': 'fa fa-book',
+                    'icon': 'fa fa-clipboard',
                     'order': 1,
                     'perm': 'WeWeb.view_messageboard',
                     'title': u'留言板'
                 }],
             'first_url': u'/backend/xadmin/WeWeb/messageboard/',
             'title': u'留言板',
-            'first_icon': 'fa fa-book'
+            'first_icon': 'fa clipboard'
         })
         self.remove_origin(menus, u'留言板')
         # 模块“物业缴费”
@@ -80,14 +82,14 @@ class GlobalSetting(object):
             'menus': [
                 {
                     'url': u'/backend/xadmin/WeWeb/payment/',
-                    'icon': 'fa fa-book',
+                    'icon': 'fa fa-money',
                     'order': 1,
                     'perm': 'WeWeb.view_payment',
                     'title': u'物业缴费'
                 }],
             'first_url': u'/backend/xadmin/WeWeb/payment/',
             'title': u'物业缴费',
-            'first_icon': 'fa fa-book'
+            'first_icon': 'fa fa-money'
         })
         self.remove_origin(menus, u'物业缴费')
         # 模块“场地租借”
@@ -95,14 +97,14 @@ class GlobalSetting(object):
             'menus': [
                 {
                     'url': u'/backend/xadmin/WeWeb/rent/',
-                    'icon': 'fa fa-book',
+                    'icon': 'fa fa-table',
                     'order': 1,
                     'perm': 'WeWeb.view_rent',
                     'title': u'场地租借'
                 }],
             'first_url': u'/backend/xadmin/WeWeb/rent/',
             'title': u'场地租借',
-            'first_icon': 'fa fa-book'
+            'first_icon': 'fa fa-table'
         })
         self.remove_origin(menus, u'场地租借')
         # 模块“送水上门”
@@ -110,20 +112,20 @@ class GlobalSetting(object):
             'menus': [
                 {
                     'url': u'/backend/xadmin/WeWeb/drink/',
-                    'icon': 'fa fa-book',
+                    'icon': 'fa fa-coffee',
                     'order': 1,
                     'perm': 'WeWeb.view_drink',
                     'title': u'饮品类型'
                 }, {
                     'url': u'/backend/xadmin/WeWeb/drinkorder/',
-                    'icon': 'fa fa-book',
+                    'icon': 'fa fa-flash',
                     'order': 2,
                     'perm': 'WeWeb.view_drinkorder',
                     'title': u'送水上门'
                 }],
             'first_url': u'/backend/xadmin/WeWeb/drinkorder/',
             'title': u'送水上门',
-            'first_icon': 'fa fa-book'
+            'first_icon': 'fa fa-coffee'
         })
         self.remove_origin(menus, u'饮品类型')
         self.remove_origin(menus, u'送水上门')
@@ -132,14 +134,14 @@ class GlobalSetting(object):
             'menus': [
                 {
                     'url': u'/backend/xadmin/WeWeb/loseandfound/',
-                    'icon': 'fa fa-book',
+                    'icon': 'fa fa-suitcase',
                     'order': 1,
                     'perm': 'WeWeb.view_loseandfound',
                     'title': u'失物招领'
                 }],
             'first_url': u'/backend/xadmin/WeWeb/loseandfound/',
             'title': u'失物招领',
-            'first_icon': 'fa fa-book'
+            'first_icon': 'fa fa-suitcase'
         })
         self.remove_origin(menus, u'失物招领')
         return menus
