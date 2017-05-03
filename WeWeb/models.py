@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from datetime import datetime
 from django.utils.timezone import utc
 from Estate import settings
+from PIL import Image
 import datetime as pdatetime
 import wxtools
 import config
@@ -243,6 +244,12 @@ class LoseAndFound(models.Model):
 
 class Banner(models.Model):
     image = models.ImageField("轮播图", upload_to='images')
+
+    def save(self, *args, **kwargs):
+        super(Banner, self).save(*args, **kwargs)
+        im = Image.open(self.image.path)
+        im = im.resize((320, 180))
+        im.save(self.image.path)
 
     def get_image_url(self):
         return 'http://www.desckie.com/' + os.path.join(settings.MEDIA_ROOT, 'images', self.image.path.split('/')[-1])
