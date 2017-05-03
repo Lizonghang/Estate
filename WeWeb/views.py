@@ -155,3 +155,20 @@ def pay(request):
 def places(request):
     place_list = [item.get_place_info() for item in Rent.objects.all() if not item.rented]
     return JsonResponse({'err': 0, 'data': place_list})
+
+
+@login_required
+@require_POST
+def rent(request):
+    place = request.POST.get('place')
+    user = request.user
+
+    try:
+        rent = Rent.objects.get(place=place)
+    except ObjectDoesNotExist:
+        return JsonResponse({'err': 1, 'msg': u'该场地不在出租列表中'})
+
+    rent.user = user
+    rent.rented = True
+    rent.save()
+    return JsonResponse({'err': 0})
