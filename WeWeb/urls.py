@@ -9,6 +9,7 @@ test_map = [
 
 list_map = [
     url(r'activity', views.activities),
+    url(r'place', views.places),
 ]
 
 urlpatterns = [

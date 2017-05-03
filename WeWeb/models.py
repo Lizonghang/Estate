@@ -168,6 +168,12 @@ class Rent(models.Model):
     member = models.IntegerField("可容纳人数", default=0)
     rented = models.BooleanField("已租借", default=False)
 
+    def get_place_info(self):
+        return {
+            'place': self.place,
+            'member': self.member
+        }
+
     def __str__(self):
         return self.place
 

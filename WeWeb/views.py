@@ -149,3 +149,9 @@ def pay(request):
     pay.paid = True
     pay.save()
     return JsonResponse({'err': 0})
+
+
+@require_GET
+def places(request):
+    place_list = [item.get_place_info() for item in Rent.objects.all() if not item.rented]
+    return JsonResponse({'err': 0, 'data': place_list})
