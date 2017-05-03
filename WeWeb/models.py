@@ -59,3 +59,15 @@ class JoinUser(models.Model):
         verbose_name = '报名情况'
         verbose_name_plural = verbose_name
         unique_together = (('user', 'activity'),)
+
+
+class MessageBoard(models.Model):
+    user = models.ForeignKey(User, verbose_name="留言用户")
+    message = models.TextField("留言", default='')
+
+    def __str__(self):
+        return self.message
+
+    class Meta:
+        verbose_name = '留言板'
+        verbose_name_plural = verbose_name

@@ -46,12 +46,27 @@ class GlobalSetting(object):
                     'perm': 'WeWeb.view_joinuser',
                     'title': u'报名情况'
                 }],
-            'first_url': u'backend/xadmin/WeWeb/activity/',
+            'first_url': u'/backend/xadmin/WeWeb/activity/',
             'title': u'小区活动',
             'first_icon': 'fa fa-lightbulb-o',
         })
         self.remove_origin(menus, u'小区活动')
         self.remove_origin(menus, u'报名情况')
+        # 模块“留言板”
+        menus.append({
+            'menus': [
+                {
+                    'url': u'/backend/xadmin/WeWeb/messageboard/',
+                    'icon': 'fa fa-book',
+                    'order': 1,
+                    'perm': 'WeWeb.view_messageboard',
+                    'title': u'留言板'
+                }],
+            'first_url': u'/backend/xadmin/WeWeb/messageboard/',
+            'title': u'留言板',
+            'first_icon': 'fa fa-book'
+        })
+        self.remove_origin(menus, u'留言板')
         return menus
 
 
@@ -73,8 +88,13 @@ class JoinUserAdmin(object):
     pass
 
 
+class MessageBoardAdmin(object):
+    pass
+
+
 xadmin.site.register(CommAdminView, GlobalSetting)
 xadmin.site.register(BaseAdminView, BaseSetting)
 xadmin.site.register(Repair, RepairAdmin)
 xadmin.site.register(Activity, ActivityAdmin)
 xadmin.site.register(JoinUser, JoinUserAdmin)
+xadmin.site.register(MessageBoard, MessageBoardAdmin)
