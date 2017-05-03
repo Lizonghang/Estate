@@ -4,6 +4,7 @@
 
 * <a href="https://github.com/Lizonghang/Estate#模拟登录操作" style="text-decoration:none;">模拟登录操作</a>
 * <a href="https://github.com/Lizonghang/Estate#模拟登出操作" style="text-decoration:none;">模拟登出操作</a>
+* <a href="https://github.com/Lizonghang/Estate#获取轮播图链接" style="text-decoration:none;">获取轮播图链接</a>
 * <a href="https://github.com/Lizonghang/Estate#住户信息绑定" style="text-decoration:none;">住户信息绑定</a>
 * <a href="https://github.com/Lizonghang/Estate#提交物业报修工单" style="text-decoration:none;">提交物业报修工单</a>
 * <a href="https://github.com/Lizonghang/Estate#获取小区活动列表" style="text-decoration:none;">获取小区活动列表</a>
