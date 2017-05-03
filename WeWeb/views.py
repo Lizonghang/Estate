@@ -72,6 +72,12 @@ def authorize(request):
     return HttpResponseRedirect(url)
 
 
+@require_GET
+def banner(request):
+    banner_info = [image.get_image_url() for image in Banner.objects.all()]
+    return JsonResponse({'err': 0, 'data': banner_info})
+
+
 @login_required
 @require_POST
 def repair(request):

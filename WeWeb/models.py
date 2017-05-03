@@ -244,6 +244,9 @@ class LoseAndFound(models.Model):
 class Banner(models.Model):
     image = models.ImageField("轮播图", upload_to='images')
 
+    def get_image_url(self):
+        return 'http://www.desckie.com/' + os.path.join(settings.MEDIA_ROOT, 'images', self.image.path.split('/')[-1])
+
     class Meta:
         verbose_name = '轮播图'
         verbose_name_plural = verbose_name
