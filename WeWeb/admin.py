@@ -203,6 +203,7 @@ class UserInfoAdmin(object):
 
 class RentAdmin(object):
     list_display = ('place', 'member', 'user', 'rented')
+    exclude = ('user', 'rented')
     list_editable = ('user', 'rented')
     list_filter = ('place', 'rented')
 
@@ -239,7 +240,7 @@ xadmin.site.register(JoinUser, JoinUserAdmin)
 xadmin.site.register(MessageBoard, MessageBoardAdmin)
 xadmin.site.register(Payment, PaymentAdmin)
 xadmin.site.register(UserInfo, UserInfoAdmin)
-xadmin.site.register(Rent, RepairAdmin)
+xadmin.site.register(Rent, RentAdmin)
 xadmin.site.register(Drink, DrinkAdmin)
 xadmin.site.register(DrinkOrder, DrinkOrderAdmin)
 xadmin.site.register(LoseAndFound, LoseAndFoundAdmin)

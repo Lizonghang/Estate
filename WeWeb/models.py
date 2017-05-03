@@ -170,7 +170,7 @@ class Payment(models.Model):
 class Rent(models.Model):
     place = models.CharField("场地名称", max_length=50, default='')
     member = models.IntegerField("可容纳人数", default=0)
-    user = models.ForeignKey(User, verbose_name='租借用户', default=None, null=True)
+    user = models.ForeignKey(User, verbose_name='租借用户', default=None, null=True, blank=True)
     rented = models.BooleanField("已租借", default=False)
 
     def get_place_info(self):
