@@ -74,3 +74,15 @@ POST http://www.desckie.com/api/weweb/join/
 #### 错误类型
 
 * 您已报名该活动
+
+## 提交留言
+
+#### API
+```
+POST http://www.desckie.com/api/weweb/message/
+```
+
+#### 参数说明
+
+* 需要登录状态
+* <code>message</code>: 用户留言。
