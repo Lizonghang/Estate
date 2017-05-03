@@ -58,3 +58,19 @@ GET http://www.desckie.com/api/weweb/list/activity/
   "err": 0
 }
 ```
+
+## 活动报名
+
+#### API
+```
+POST http://www.desckie.com/api/weweb/join/
+```
+
+#### 参数说明
+
+* 需要登录状态
+* <code>name</code>: 活动名称。
+
+#### 错误类型
+
+* 您已报名该活动
