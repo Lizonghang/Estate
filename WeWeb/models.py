@@ -134,7 +134,7 @@ class Payment(models.Model):
                     'color': '#173177',
                 },
                 'keyword4': {
-                    'value': self.date.strftime('%Y-%m-%d'),
+                    'value': self.date.strftime('%Y年%m月'),
                     'color': '#173177',
                 },
                 'remark': {
