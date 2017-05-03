@@ -30,13 +30,13 @@ class GlobalSetting(object):
             # 删除AUTH栏“组”与“权限”
         del menus[0]['menus'][2]
         del menus[0]['menus'][0]
-        menus[0]['menus'][1] = {
+        menus[0]['menus'].append({
             'url': u'/backend/xadmin/WeWeb/userinfo/',
             'icon': 'fa fa-book',
             'order': 3,
             'perm': 'WeWeb.view_userinfo',
             'title': u'信息管理',
-        }
+        })
         # 模块“小区活动”
         menus.append({
             'menus': [
