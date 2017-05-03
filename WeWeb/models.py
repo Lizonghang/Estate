@@ -103,6 +103,17 @@ class Payment(models.Model):
         self.total_price = self.manage_price + self.park_price + self.other_price
         super(Payment, self).save(*args, **kwargs)
 
+    def get_pay_info(self):
+        return {
+            'name': self.user.userinfo.name,
+            'room': self.user.userinfo.room,
+            'manage_price': self.manage_price,
+            'park_price': self.park_price,
+            'other_price': self.other_price,
+            'total_price': self.total_price
+        }
+
     class Meta:
         verbose_name = '物业缴费'
         verbose_name_plural = verbose_name
+        unique_together = (('user', 'date'),)

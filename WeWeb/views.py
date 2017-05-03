@@ -129,3 +129,10 @@ def bind(request):
     user_info.room = room
     user_info.save()
     return JsonResponse({'err': 0})
+
+
+@login_required
+@require_GET
+def payinfo(request):
+    info = request.user.payment_set.get(date=default_time_now()).get_pay_info()
+    return JsonResponse({'err': 0, 'data': info})
