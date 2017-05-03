@@ -8,8 +8,9 @@ test_map = [
 ]
 
 list_map = [
-    url(r'activity', views.activities),
-    url(r'place', views.places),
+    url(r'activity/$', views.activities),
+    url(r'place/$', views.places),
+    url(r'drink/$', views.drinks),
 ]
 
 urlpatterns = [
@@ -22,7 +23,6 @@ urlpatterns = [
     url(r'payinfo/$', views.payinfo),
     url(r'pay/$', views.pay),
     url(r'rent/$', views.rent),
-    url(r'price/$', views.price),
     url(r'list/', include(list_map)),
     url(r'test/', include(test_map)),
     url(r'login_require/$', views.login_require),

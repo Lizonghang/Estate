@@ -200,3 +200,5 @@ POST http://www.desckie.com/api/weweb/rent/
 
 * 要求登录状态
 * <code>place</code>: 租借场地名称。
+
+## 饮品类型查询

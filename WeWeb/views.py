@@ -183,10 +183,6 @@ def refresh_place(request):
 
 
 @require_GET
-def price(request):
-    name = request.GET.get('name')
-    try:
-        drink = Drink.objects.get(name=name)
-    except ObjectDoesNotExist:
-        return JsonResponse({'err': 1, 'msg': u'该饮品不存在'})
-    return JsonResponse({'err': 0, 'data': drink.get_base_info()})
+def drinks(request):
+    drink_info = [item.get_base_info() for item in Drink.objects.all()]
+    return JsonResponse({'err': 0, 'data': drink_info})
