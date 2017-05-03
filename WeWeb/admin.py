@@ -37,6 +37,7 @@ class GlobalSetting(object):
             'perm': 'WeWeb.view_userinfo',
             'title': u'信息管理',
         })
+        self.remove_origin(menus, u'信息管理')
         # 模块“小区活动”
         menus.append({
             'menus': [
