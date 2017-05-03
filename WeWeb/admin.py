@@ -30,6 +30,21 @@ class GlobalSetting(object):
             # 删除AUTH栏“组”与“权限”
         del menus[0]['menus'][2]
         del menus[0]['menus'][0]
+        # 模块“小区活动”
+        menus.append({
+            'menus': [
+                {
+                    'url': u'/backend/xadmin/WeWeb/activity/',
+                    'icon': 'fa fa-book',
+                    'order': 1,
+                    'perm': 'WeWeb.view_activity',
+                    'title': u'小区活动'
+                }],
+            'first_url': u'backend/xadmin/WeWeb/activity/',
+            'title': u'小区活动',
+            'first_icon': 'fa fa-lightbulb-o',
+        })
+        self.remove_origin(menus, u'小区活动')
         return menus
 
 
