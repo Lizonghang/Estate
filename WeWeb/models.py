@@ -9,6 +9,12 @@ def default_time_now():
     return datetime.utcnow().replace(tzinfo=utc)
 
 
+class UserInfo(models.Model):
+    user = models.OneToOneField(User, verbose_name='用户')
+    name = models.CharField("用户名称", max_length=10, default='')
+    room = models.CharField("房间号", max_length=50, default='')
+
+
 class Repair(models.Model):
     user = models.ForeignKey(User, verbose_name="报修人")
     loc = models.CharField("故障地点", default='', max_length=50)

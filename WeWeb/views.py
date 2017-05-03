@@ -115,3 +115,17 @@ def message(request):
     MessageBoard.objects.create(user=user, message=msg)
 
     return JsonResponse({'err': 0})
+
+
+@login_required
+@require_POST
+def bind(request):
+    params = request.POST
+    name = params.get('name')
+    room = params.get('room')
+    user = request.user
+    user_info, _ = UserInfo.objects.get_or_create(user=user)
+    user_info.name = name
+    user_info.room = room
+    user_info.save()
+    return JsonResponse({'err': 0})
