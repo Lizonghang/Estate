@@ -3,10 +3,19 @@ from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime
 from django.utils.timezone import utc
+import datetime as pdatetime
+import wxtools
+import config
 
 
 def default_time_now():
     return datetime.utcnow().replace(tzinfo=utc)
+
+
+def default_month_now():
+    date_now = datetime.utcnow().replace(tzinfo=utc)
+    month_now = pdatetime.date(date_now.year, date_now.month, 1)
+    return month_now
 
 
 class UserInfo(models.Model):
@@ -90,18 +99,51 @@ class MessageBoard(models.Model):
 
 class Payment(models.Model):
     user = models.ForeignKey(User, verbose_name='缴费用户')
-    date = models.DateField('缴费日期', default=default_time_now)
-    per_price = models.IntegerField('物业管理费/平', default=0)
+    date = models.DateField('当前月份', default=default_month_now)
+    per_price = models.IntegerField('物业管理费/平', default=10)
     manage_price = models.IntegerField('物业管理费', default=0, editable=False)
     park_price = models.IntegerField('车位管理费', default=0, editable=False)
     other_price = models.IntegerField('其他费用', default=0)
     total_price = models.IntegerField('总费用', default=0, editable=False)
+    paid = models.BooleanField('付费状态', default=False)
 
     def save(self, *args, **kwargs):
         self.manage_price = self.per_price * self.user.userinfo.area
         self.park_price = 30*self.user.userinfo.park
         self.total_price = self.manage_price + self.park_price + self.other_price
         super(Payment, self).save(*args, **kwargs)
+        data = {
+            'touser': self.user.username,
+            'template_id': 's_cQZD6stxCkmZ8e7o9Qh58-h1XtcrIhtKAL4_GM7ww',
+            'url': config.authorize_uri % 'url=http://www.desckie.com/#/Pay',
+            'data': {
+                'first': {
+                    'value': u'本月待缴纳的物业费用',
+                    'color': '#173177',
+                },
+                'keyword1': {
+                    'value': self.user.userinfo.name,
+                    'color': '#173177',
+                },
+                'keyword2': {
+                    'value': self.user.userinfo.room,
+                    'color': '#173177',
+                },
+                'keyword3': {
+                    'value': self.total_price,
+                    'color': '#173177',
+                },
+                'keyword4': {
+                    'value': self.date.strftime('%Y-%m-%d'),
+                    'color': '#173177',
+                },
+                'remark': {
+                    'value': u'为保证您正常享受物业服务,请及时缴纳费用,谢谢!',
+                    'color': '#173177',
+                }
+            }
+        }
+        wxtools.send_template_message(data)
 
     def get_pay_info(self):
         return {

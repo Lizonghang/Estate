@@ -1,6 +1,7 @@
 # encoding: utf-8
 import config
 import requests
+import json
 
 
 def get_access_token():
@@ -56,3 +57,9 @@ def create_menu():
         ]
     }""" % (index, fix, pay, message)
     print requests.post(api, menu).text
+
+
+def send_template_message(data):
+    api = 'https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=' + get_access_token()
+    resp = requests.post(api, data=json.dumps(data)).json()
+    return resp
