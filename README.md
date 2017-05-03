@@ -18,6 +18,19 @@ GET http://www.desckie.com/api/weweb/test/login?openid=OPENID
 GET http://www.desckie.com/api/weweb/test/logout/
 ```
 
+## 住户信息绑定
+
+#### API
+```
+POST http://www.desckie.com/api/weweb/bind/
+```
+
+#### 参数说明
+
+* 需要登录状态
+* <code>name</code>: 住户姓名。
+* <code>room</code>: 房间号。
+
 ## 提交物业报修工单
 
 #### API
