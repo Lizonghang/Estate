@@ -24,5 +24,6 @@ urlpatterns = [
     url(r'rent/$', views.rent),
     url(r'list/', include(list_map)),
     url(r'test/', include(test_map)),
-    url(r'login_require/', views.login_require),
+    url(r'login_require/$', views.login_require),
+    url(r'refresh_place/$', views.refresh_place),
 ]
