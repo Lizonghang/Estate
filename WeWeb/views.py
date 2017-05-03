@@ -172,3 +172,11 @@ def rent(request):
     rent.rented = True
     rent.save()
     return JsonResponse({'err': 0})
+
+
+def refresh_place(request):
+    for item in Rent.objects.all():
+        item.user = None
+        item.rented = False
+        item.save()
+    return HttpResponse()
