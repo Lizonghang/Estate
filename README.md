@@ -99,3 +99,29 @@ POST http://www.desckie.com/api/weweb/message/
 
 * 需要登录状态
 * <code>message</code>: 用户留言。
+
+## 获取缴费信息
+
+#### API
+```
+GET http://www.desckie.com/api/weweb/payinfo/
+```
+
+#### 参数说明
+
+* 需要登录状态
+
+#### 返回数据
+```
+{
+  "data": {
+    "total_price": 1080,
+    "park_price": 30,
+    "name": "李宗航",
+    "other_price": 50,
+    "manage_price": 1000,
+    "room": "244"
+  },
+  "err": 0
+}
+```
