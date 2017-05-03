@@ -14,8 +14,8 @@ def handler500(request):
     return JsonResponse({'err': 1, 'msg': u'请检查数据提交方法和参数是否正确'})
 
 
-def index(request):
-    return HttpResponse('index page')
+def login_require(request):
+    return JsonResponse({'err': 1, 'msg': u'该操作需要登录状态'})
 
 
 def server_access(request):
@@ -90,3 +90,17 @@ def activities(request):
     for activity in Activity.objects.all():
         activity_list.append(activity.get_base_info())
     return JsonResponse({'err': 0, 'data': activity_list})
+
+
+@login_required
+@require_POST
+def join(request):
+    name = request.POST.get('name')
+    user = request.user
+    activity = Activity.objects.get(name=name)
+    log, new = JoinUser.objects.get_or_create(user=user, activity=activity)
+    if not new:
+        return JsonResponse({'err': 1, 'msg': '您已报名该活动'})
+    activity.join += 1
+    activity.save()
+    return JsonResponse({'err': 0})

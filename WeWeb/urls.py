@@ -12,10 +12,10 @@ list_map = [
 ]
 
 urlpatterns = [
-    url(r'^$', views.index),
     url(r'access/$', views.server_access),
     url(r'authorize/$', views.authorize),
     url(r'repair/$', views.repair),
     url(r'list/', include(list_map)),
     url(r'test/', include(test_map)),
+    url(r'login_require/', views.login_require),
 ]

@@ -23,7 +23,7 @@ class Repair(models.Model):
 
 
 class Activity(models.Model):
-    name = models.CharField("活动名称", default='', max_length=50)
+    name = models.CharField("活动名称", default='', max_length=50, unique=True)
     date = models.DateField("活动时间", default=default_time_now)
     detail = models.TextField("活动详情", default='')
     loc = models.CharField("活动地点", default='', max_length=50)
@@ -49,3 +49,11 @@ class Activity(models.Model):
     class Meta:
         verbose_name = '小区活动'
         verbose_name_plural = verbose_name
+
+
+class JoinUser(models.Model):
+    user = models.ForeignKey(User, verbose_name="报名用户")
+    activity = models.ForeignKey(Activity, verbose_name="报名活动")
+
+    class Meta:
+        unique_together = (('user', 'activity'),)
