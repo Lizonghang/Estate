@@ -169,23 +169,30 @@ class BaseSetting(object):
 
 
 class RepairAdmin(object):
-    pass
+    list_display = ('loc', 'desc', 'user__userinfo__name', 'state')
+    list_editable = ('state',)
+    list_filter = ('state',)
 
 
 class ActivityAdmin(object):
-    pass
+    list_display = ('name', 'loc', 'date', 'member', 'join', 'rest')
+    exclude = ('join', 'rest')
 
 
 class JoinUserAdmin(object):
-    pass
+    list_display = ('user__userinfo__name', 'activity__name')
+    list_filter = ('activity__name',)
 
 
 class MessageBoardAdmin(object):
-    pass
+    list_display = ('user__userinfo__name', 'message')
 
 
 class PaymentAdmin(object):
-    pass
+    list_display = ('user__userinfo__name', 'manage_price', 'park_price', 'other_price', 'total_price', 'date', 'paid')
+    exclude = ('paid',)
+    list_editable = ('paid',)
+    list_filter = ('user__userinfo__name', 'date', 'paid')
 
 
 class UserInfoAdmin(object):

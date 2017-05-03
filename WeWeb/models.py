@@ -40,6 +40,7 @@ class Repair(models.Model):
     user = models.ForeignKey(User, verbose_name="报修人")
     loc = models.CharField("故障地点", default='', max_length=50)
     desc = models.TextField("故障描述", default='')
+    state = models.BooleanField("已维修", default=False)
 
     def __str__(self):
         return '故障地点: ' + self.loc
@@ -102,7 +103,7 @@ class MessageBoard(models.Model):
 
 class Payment(models.Model):
     user = models.ForeignKey(User, verbose_name='缴费用户')
-    date = models.DateField('通知日期', default=default_month_now)
+    date = models.DateField('缴费月份', default=default_month_now)
     per_price = models.IntegerField('物业管理费/平', default=10)
     manage_price = models.IntegerField('物业管理费', default=0, editable=False)
     park_price = models.IntegerField('车位管理费', default=0, editable=False)
