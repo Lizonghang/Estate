@@ -90,6 +90,21 @@ class GlobalSetting(object):
             'first_icon': 'fa fa-book'
         })
         self.remove_origin(menus, u'物业缴费')
+        # 模块“场地租借”
+        menus.append({
+            'menus': [
+                {
+                    'url': u'/backend/xadmin/WeWeb/rent/',
+                    'icon': 'fa fa-book',
+                    'order': 1,
+                    'perm': 'WeWeb.view_rent',
+                    'title': u'场地租借'
+                }],
+            'first_url': u'/backend/xadmin/WeWeb/rent/',
+            'title': u'场地租借',
+            'first_icon': 'fa fa-book'
+        })
+        self.remove_origin(menus, u'场地租借')
         return menus
 
 
@@ -123,6 +138,10 @@ class UserInfoAdmin(object):
     pass
 
 
+class RentAdmin(object):
+    pass
+
+
 xadmin.site.register(CommAdminView, GlobalSetting)
 xadmin.site.register(BaseAdminView, BaseSetting)
 xadmin.site.register(Repair, RepairAdmin)
@@ -131,3 +150,4 @@ xadmin.site.register(JoinUser, JoinUserAdmin)
 xadmin.site.register(MessageBoard, MessageBoardAdmin)
 xadmin.site.register(Payment, PaymentAdmin)
 xadmin.site.register(UserInfo, UserInfoAdmin)
+xadmin.site.register(Rent, RepairAdmin)

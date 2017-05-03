@@ -161,3 +161,16 @@ class Payment(models.Model):
         verbose_name = '物业缴费'
         verbose_name_plural = verbose_name
         unique_together = (('user', 'date'),)
+
+
+class Rent(models.Model):
+    place = models.CharField("场地名称", max_length=50, default='')
+    member = models.IntegerField("可容纳人数", default=0)
+    rented = models.BooleanField("已租借", default=False)
+
+    def __str__(self):
+        return self.place
+
+    class Meta:
+        verbose_name = '场地租借'
+        verbose_name_plural = verbose_name
