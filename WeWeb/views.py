@@ -203,3 +203,9 @@ def drinkorder(request):
 
     DrinkOrder.objects.create(user=user, drink=drink, loc=loc)
     return JsonResponse({'err': 0})
+
+
+@require_GET
+def lose(request):
+    lose_info = [item.get_base_info() for item in LoseAndFound.objects.all() if not item.state]
+    return JsonResponse({'err': 0, 'data': lose_info})

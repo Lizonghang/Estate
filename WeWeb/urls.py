@@ -11,6 +11,7 @@ list_map = [
     url(r'activity/$', views.activities),
     url(r'place/$', views.places),
     url(r'drink/$', views.drinks),
+    url(r'lose/$', views.lose),
 ]
 
 urlpatterns = [

@@ -6,3 +6,4 @@ WeWeb/migrations/*
 Estate/settings.py
 WeWeb/config.py
 dist/*
+source/media/*
