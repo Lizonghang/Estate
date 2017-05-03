@@ -19,6 +19,7 @@ urlpatterns = [
     url(r'message/$', views.message),
     url(r'bind/$', views.bind),
     url(r'payinfo/$', views.payinfo),
+    url(r'pay/$', views.pay),
     url(r'list/', include(list_map)),
     url(r'test/', include(test_map)),
     url(r'login_require/', views.login_require),
