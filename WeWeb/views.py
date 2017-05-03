@@ -101,6 +101,6 @@ def join(request):
     log, new = JoinUser.objects.get_or_create(user=user, activity=activity)
     if not new:
         return JsonResponse({'err': 1, 'msg': '您已报名该活动'})
-    activity.join += 1
+    activity.join = len(JoinUser.objects.filter(activity=activity))
     activity.save()
     return JsonResponse({'err': 0})
