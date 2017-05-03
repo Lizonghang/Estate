@@ -82,3 +82,11 @@ def repair(request):
     Repair.objects.create(user=user, loc=loc, desc=desc)
 
     return JsonResponse({'err': 0})
+
+
+@require_GET
+def activities(request):
+    activity_list = []
+    for activity in Activity.objects.all():
+        activity_list.append(activity.get_base_info())
+    return JsonResponse({'err': 0, 'data': activity_list})

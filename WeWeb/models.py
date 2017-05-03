@@ -35,6 +35,14 @@ class Activity(models.Model):
         self.rest = self.member - self.join
         super(Activity, self).save(*args, **kwargs)
 
+    def get_base_info(self):
+        return {
+            'name': self.name,
+            'date': self.date.strftime('%Y-%m-%d'),
+            'detail': self.detail,
+            'loc': self.loc
+        }
+
     def __str__(self):
         return '活动: ' + self.name
 
