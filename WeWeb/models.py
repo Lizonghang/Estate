@@ -13,7 +13,7 @@ class UserInfo(models.Model):
     user = models.OneToOneField(User, verbose_name='用户')
     name = models.CharField("用户名称", max_length=10, default='')
     room = models.CharField("房间号", max_length=50, default='')
-    area = models.FloatField("房屋面积", default=0)
+    area = models.IntegerField("房屋面积", default=0)
     park = models.IntegerField("车位数", default=0)
 
 
@@ -84,11 +84,11 @@ class MessageBoard(models.Model):
 class Payment(models.Model):
     user = models.ForeignKey(User, verbose_name='缴费用户')
     date = models.DateField('缴费日期', default=default_time_now)
-    per_price = models.FloatField('物业管理费/平', default=0)
-    manage_price = models.FloatField('物业管理费', default=0, editable=False)
-    park_price = models.FloatField('车位管理费', default=0, editable=False)
-    other_price = models.FloatField('其他费用', default=0)
-    total_price = models.FloatField('总费用', default=0, editable=False)
+    per_price = models.IntegerField('物业管理费/平', default=0)
+    manage_price = models.IntegerField('物业管理费', default=0, editable=False)
+    park_price = models.IntegerField('车位管理费', default=0, editable=False)
+    other_price = models.IntegerField('其他费用', default=0)
+    total_price = models.IntegerField('总费用', default=0, editable=False)
 
     def save(self, *args, **kwargs):
         self.manage_price = self.per_price * self.user.userinfo.area
