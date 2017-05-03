@@ -127,6 +127,21 @@ class GlobalSetting(object):
         })
         self.remove_origin(menus, u'饮品类型')
         self.remove_origin(menus, u'送水上门')
+        # 模块“失物招领”
+        menus.append({
+            'menus': [
+                {
+                    'url': u'/backend/xadmin/WeWeb/loseandfound/',
+                    'icon': 'fa fa-book',
+                    'order': 1,
+                    'perm': 'WeWeb.view_loseandfound',
+                    'title': u'失物招领'
+                }],
+            'first_url': u'/backend/xadmin/WeWeb/loseandfound/',
+            'title': u'失物招领',
+            'first_icon': 'fa fa-book'
+        })
+        self.remove_origin(menus, u'失物招领')
         return menus
 
 
@@ -172,6 +187,10 @@ class DrinkOrderAdmin(object):
     pass
 
 
+class LoseAndFoundAdmin(object):
+    pass
+
+
 xadmin.site.register(CommAdminView, GlobalSetting)
 xadmin.site.register(BaseAdminView, BaseSetting)
 xadmin.site.register(Repair, RepairAdmin)
@@ -183,3 +202,4 @@ xadmin.site.register(UserInfo, UserInfoAdmin)
 xadmin.site.register(Rent, RepairAdmin)
 xadmin.site.register(Drink, DrinkAdmin)
 xadmin.site.register(DrinkOrder, DrinkOrderAdmin)
+xadmin.site.register(LoseAndFound, LoseAndFoundAdmin)

@@ -3,9 +3,11 @@ from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime
 from django.utils.timezone import utc
+from Estate import settings
 import datetime as pdatetime
 import wxtools
 import config
+import os
 
 
 def default_time_now():
@@ -212,4 +214,28 @@ class DrinkOrder(models.Model):
 
     class Meta:
         verbose_name = '送水上门'
+        verbose_name_plural = verbose_name
+
+
+class LoseAndFound(models.Model):
+    name = models.CharField("物品名称", max_length=50, default='')
+    desc = models.TextField("描述", default='')
+    date = models.DateField("发表时间", default=default_time_now)
+    image = models.ImageField("物品图片", upload_to='images',
+                              default=os.path.join(settings.MEDIA_ROOT, 'images', 'default.jpg'))
+    state = models.BooleanField("已认领", default=False)
+
+    def get_base_info(self):
+        return {
+            'name': self.name,
+            'desc': self.desc,
+            'date': self.date.strftime('%Y-%m-%d'),
+            'image': self.image.path
+        }
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = '失物招领'
         verbose_name_plural = verbose_name
