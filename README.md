@@ -35,6 +35,26 @@ GET http://www.desckie.com/api/weweb/test/login?openid=OPENID
 GET http://www.desckie.com/api/weweb/test/logout/
 ```
 
+## 获取轮播图链接
+
+#### API
+```
+GET http://www.desckie.com/api/weweb/banner/
+```
+
+#### 返回数据
+```
+{
+  "data": [
+    "http://www.desckie.com/source/media/images/u39557159142468951981fm23gp0.jpg",
+    "http://www.desckie.com/source/media/images/76A50042-7EDC-4111-AC2F-3DCFE634DAFC.jpg",
+    "http://www.desckie.com/source/media/images/u11002010164182156059fm23gp0.jpg",
+    "http://www.desckie.com/source/media/images/u423296772542526758fm23gp0.jpg"
+  ],
+  "err": 0
+}
+```
+
 ## 住户信息绑定
 
 #### API
