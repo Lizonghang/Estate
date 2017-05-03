@@ -99,7 +99,7 @@ class MessageBoard(models.Model):
 
 class Payment(models.Model):
     user = models.ForeignKey(User, verbose_name='缴费用户')
-    date = models.DateField('当前月份', default=default_month_now)
+    date = models.DateField('通知日期', default=default_month_now)
     per_price = models.IntegerField('物业管理费/平', default=10)
     manage_price = models.IntegerField('物业管理费', default=0, editable=False)
     park_price = models.IntegerField('车位管理费', default=0, editable=False)
