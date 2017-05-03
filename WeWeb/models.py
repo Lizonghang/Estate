@@ -14,6 +14,9 @@ class Repair(models.Model):
     loc = models.CharField("故障地点", default='', max_length=50)
     desc = models.TextField("故障描述", default='')
 
+    def __str__(self):
+        return '故障地点: ' + self.loc
+
     class Meta:
         verbose_name = '物业报修'
         verbose_name_plural = verbose_name
@@ -31,6 +34,9 @@ class Activity(models.Model):
     def save(self, *args, **kwargs):
         self.rest = self.member - self.join
         super(Activity, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return '活动: ' + self.name
 
     class Meta:
         verbose_name = '小区活动'
