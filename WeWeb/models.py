@@ -16,6 +16,13 @@ class UserInfo(models.Model):
     area = models.IntegerField("房屋面积", default=0)
     park = models.IntegerField("车位数", default=0)
 
+    def __str__(self):
+        return self.user.username
+
+    class Meta:
+        verbose_name = '信息管理'
+        verbose_name_plural = verbose_name
+
 
 class Repair(models.Model):
     user = models.ForeignKey(User, verbose_name="报修人")
