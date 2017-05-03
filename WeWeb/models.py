@@ -115,7 +115,7 @@ class Payment(models.Model):
         data = {
             'touser': self.user.username,
             'template_id': 's_cQZD6stxCkmZ8e7o9Qh58-h1XtcrIhtKAL4_GM7ww',
-            'url': config.authorize_uri % 'url=http://www.desckie.com/#/Pay',
+            'url': config.authorize_uri % 'url=http://www.desckie.com/#/Pay'.replace('#', ''),
             'data': {
                 'first': {
                     'value': u'本月待缴纳的物业费用',
