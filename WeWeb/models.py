@@ -112,6 +112,8 @@ class Payment(models.Model):
         self.park_price = 30*self.user.userinfo.park
         self.total_price = self.manage_price + self.park_price + self.other_price
         super(Payment, self).save(*args, **kwargs)
+        if self.paid:
+            return
         data = {
             'touser': self.user.username,
             'template_id': 's_cQZD6stxCkmZ8e7o9Qh58-h1XtcrIhtKAL4_GM7ww',
