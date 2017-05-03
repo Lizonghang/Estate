@@ -67,6 +67,21 @@ class GlobalSetting(object):
             'first_icon': 'fa fa-book'
         })
         self.remove_origin(menus, u'留言板')
+        # 模块“物业缴费”
+        menus.append({
+            'menus': [
+                {
+                    'url': u'/backend/xadmin/WeWeb/payment/',
+                    'icon': 'fa fa-book',
+                    'order': 1,
+                    'perm': 'WeWeb.view_payment',
+                    'title': u'物业缴费'
+                }],
+            'first_url': u'/backend/xadmin/WeWeb/payment/',
+            'title': u'物业缴费',
+            'first_icon': 'fa fa-book'
+        })
+        self.remove_origin(menus, u'物业缴费')
         return menus
 
 
@@ -92,9 +107,14 @@ class MessageBoardAdmin(object):
     pass
 
 
+class PaymentAdmin(object):
+    pass
+
+
 xadmin.site.register(CommAdminView, GlobalSetting)
 xadmin.site.register(BaseAdminView, BaseSetting)
 xadmin.site.register(Repair, RepairAdmin)
 xadmin.site.register(Activity, ActivityAdmin)
 xadmin.site.register(JoinUser, JoinUserAdmin)
 xadmin.site.register(MessageBoard, MessageBoardAdmin)
+xadmin.site.register(Payment, PaymentAdmin)

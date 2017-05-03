@@ -13,6 +13,8 @@ class UserInfo(models.Model):
     user = models.OneToOneField(User, verbose_name='用户')
     name = models.CharField("用户名称", max_length=10, default='')
     room = models.CharField("房间号", max_length=50, default='')
+    area = models.FloatField("房屋面积", default=0)
+    park = models.IntegerField("车位数", default=0)
 
 
 class Repair(models.Model):
@@ -76,4 +78,24 @@ class MessageBoard(models.Model):
 
     class Meta:
         verbose_name = '留言板'
+        verbose_name_plural = verbose_name
+
+
+class Payment(models.Model):
+    user = models.ForeignKey(User, verbose_name='缴费用户')
+    date = models.DateField('缴费日期', default=default_time_now)
+    per_price = models.FloatField('物业管理费/平', default=0)
+    manage_price = models.FloatField('物业管理费', default=0, editable=False)
+    park_price = models.FloatField('车位管理费', default=0, editable=False)
+    other_price = models.FloatField('其他费用', default=0)
+    total_price = models.FloatField('总费用', default=0, editable=False)
+
+    def save(self, *args, **kwargs):
+        self.manage_price = self.per_price * self.user.userinfo.area
+        self.park_price = 30*self.user.userinfo.park
+        self.total_price = self.manage_price + self.park_price + self.other_price
+        super(Payment, self).save(*args, **kwargs)
+
+    class Meta:
+        verbose_name = '物业缴费'
         verbose_name_plural = verbose_name
