@@ -1,3 +1,4 @@
+from WXEventHandler.Subscribe import SubscribeHandler
 from bs4 import BeautifulSoup
 import config
 
@@ -12,4 +13,15 @@ class WXMsgHandler:
     def event_router(self):
         XMLdata = BeautifulSoup(self.xml, "lxml-xml")
         MsgType = XMLdata.find('MsgType').get_text()
+        if MsgType == 'event':
+            Event = XMLdata.find('Event').get_text()
+            if Event == 'subscribe':
+                handler = SubscribeHandler(XMLdata)
+                return handler.get_message()
+            if Event == 'CLICK':
+                EventKey = XMLdata.find('EventKey').get_text()
+                if EventKey == 'fangkeyuyue':
+                    return ''
+        elif MsgType == 'text':
+            return ''
         return ''
