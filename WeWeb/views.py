@@ -104,3 +104,14 @@ def join(request):
     activity.join = len(JoinUser.objects.filter(activity=activity))
     activity.save()
     return JsonResponse({'err': 0})
+
+
+@login_required
+@require_POST
+def message(request):
+    msg = request.POST.get('message')
+    user = request.user
+
+    MessageBoard.objects.create(user=user, message=msg)
+
+    return JsonResponse({'err': 0})

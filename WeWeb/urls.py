@@ -16,6 +16,7 @@ urlpatterns = [
     url(r'authorize/$', views.authorize),
     url(r'repair/$', views.repair),
     url(r'join/$', views.join),
+    url(r'message/$', views.message),
     url(r'list/', include(list_map)),
     url(r'test/', include(test_map)),
     url(r'login_require/', views.login_require),
