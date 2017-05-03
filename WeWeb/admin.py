@@ -43,6 +43,11 @@ class RepairAdmin(object):
     pass
 
 
+class ActivityAdmin(object):
+    pass
+
+
 xadmin.site.register(CommAdminView, GlobalSetting)
 xadmin.site.register(BaseAdminView, BaseSetting)
 xadmin.site.register(Repair, RepairAdmin)
+xadmin.site.register(Activity, ActivityAdmin)
