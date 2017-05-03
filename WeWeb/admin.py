@@ -66,7 +66,7 @@ class GlobalSetting(object):
             'title': u'留言板',
             'first_icon': 'fa fa-book'
         })
-        # self.remove_origin(menus, u'留言板')
+        self.remove_origin(menus, u'留言板')
         return menus
 
 
