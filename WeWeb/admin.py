@@ -149,14 +149,14 @@ class GlobalSetting(object):
             'menus': [
                 {
                     'url': u'/backend/xadmin/WeWeb/visitor/',
-                    'icon': 'fa fa-picture-o',
+                    'icon': 'fa fa-handshake-o',
                     'order': 1,
                     'perm': 'WeWeb.view_visitor',
                     'title': u'访客预约'
                 }],
             'first_url': u'/backend/xadmin/WeWeb/visitor/',
             'title': u'访客预约',
-            'first_icon': 'fa fa-cog'
+            'first_icon': 'fa fa-handshake-o'
         })
         self.remove_origin(menus, u'访客预约')
         # 模块“其他设置”
