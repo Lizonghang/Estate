@@ -33,7 +33,7 @@ class VisitorHandler:
          <FromUserName><![CDATA[""" + toUser + """]]></FromUserName>
          <CreateTime>""" + str(create_time) + """</CreateTime>
          <MsgType><![CDATA[text]]></MsgType>
-         <Content><![CDATA[请输入来访客人姓名,如#张三#。若有多人来访,仅填写一人姓名即可。]]></Content>
+         <Content><![CDATA[请输入来访客人姓名,如<a>#张三#</a>。若有多人来访,仅填写一人姓名即可。]]></Content>
         </xml> """
         return ret_xml
 
@@ -75,7 +75,7 @@ class VisitorBindHandler:
         return fromUser, toUser, Content
 
     def _get_success_response(self, fromUser, toUser, visitor):
-        msg = '预约来访客人姓名: {0}, 预约码: {1}。来访客人进入小区时请出示该预约码与个人证件,感谢您的预约!'.format(visitor.visitor, visitor.code)
+        msg = '预约来访客人姓名: <a>{0}</a>, 预约码: <a>{1}</a>。来访客人进入小区时请出示该预约码与个人证件,感谢您的预约!'.format(visitor.visitor, visitor.code)
         create_time = int(time.time())
         ret_xml = """
         <xml>
@@ -89,7 +89,7 @@ class VisitorBindHandler:
 
     def _get_fail_response(self, fromUser, toUser, errcode):
         if errcode == 1:
-            errmsg = '请将来访客人姓名使用双#号括起,如#张三#。若有多人一起来访,仅填写其中一人姓名即可。'
+            errmsg = '请将来访客人姓名使用双#号括起,如<a>#张三#</a>。若有多人一起来访,仅填写其中一人姓名即可。'
         elif errcode == 2:
             errmsg = '请先通过"快捷服务->访客预约"创建预约记录'
         else:
