@@ -63,9 +63,11 @@ class VisitorBindHandler:
             return self._get_fail_response(fromUser, toUser, 1)
         user = User.objects.get(username=fromUser)
         try:
-            visitor = Visitor.objects.get(master=user)
+            visitor = Visitor.objects.get(master=user, visitor='')
         except ObjectDoesNotExist:
             return self._get_fail_response(fromUser, toUser, 2)
+        visitor.visitor = matches[0]
+        visitor.save()
         return self._get_success_response(fromUser, toUser, visitor)
 
     def _parse(self, XMLdata):
