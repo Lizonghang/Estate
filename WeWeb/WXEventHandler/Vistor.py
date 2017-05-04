@@ -66,8 +66,7 @@ class VisitorBindHandler:
             visitor = Visitor.objects.get(master=user)
         except ObjectDoesNotExist:
             return self._get_fail_response(fromUser, toUser, 2)
-        ret_xml = self._get_success_response(fromUser, toUser, visitor)
-        return ret_xml
+        return self._get_success_response(fromUser, toUser, visitor)
 
     def _parse(self, XMLdata):
         fromUser = XMLdata.find('FromUserName').get_text()

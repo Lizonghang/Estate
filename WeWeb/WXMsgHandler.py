@@ -1,5 +1,5 @@
 from WXEventHandler.Subscribe import SubscribeHandler
-from WXEventHandler.Vistor import VisitorHandler
+from WXEventHandler.Vistor import VisitorHandler, VisitorBindHandler
 from bs4 import BeautifulSoup
 import config
 
@@ -25,5 +25,8 @@ class WXMsgHandler:
                     handler = VisitorHandler(XMLdata)
                     return handler.get_message()
         elif MsgType == 'text':
-            return ''
+            Content = XMLdata.find('Content').get_text().strip()
+            if '#' in Content:
+                handler = VisitorBindHandler(XMLdata)
+                return handler.get_message()
         return ''

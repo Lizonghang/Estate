@@ -12,8 +12,7 @@ class SubscribeHandler:
     def get_message(self):
         fromUser, toUser = self._parse(self.XMLdata)
         User.objects.get_or_create(username=fromUser)
-        ret_xml = self._get_subscribe_response(fromUser, toUser)
-        return ret_xml
+        return self._get_subscribe_response(fromUser, toUser)
 
     def _parse(self, XMLdata):
         fromUser = XMLdata.find('FromUserName').get_text()
