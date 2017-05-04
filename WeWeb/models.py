@@ -8,6 +8,7 @@ from PIL import Image
 import datetime as pdatetime
 import wxtools
 import config
+import random
 import os
 
 
@@ -257,4 +258,22 @@ class Banner(models.Model):
 
     class Meta:
         verbose_name = '轮播图'
+        verbose_name_plural = verbose_name
+
+
+def random_code():
+    return str(random.randint(100000, 999999))
+
+
+class Visitor(models.Model):
+    code = models.IntegerField("授权码", default=random_code, unique=True)
+    master = models.ForeignKey(User, verbose_name='户主姓名', default=None, null=True)
+    visitor = models.CharField("访客姓名", max_length=10, default='')
+    state = models.BooleanField("已来访", default=False)
+
+    def __str__(self):
+        return str(self.code)
+
+    class Meta:
+        verbose_name = '访客预约'
         verbose_name_plural = verbose_name

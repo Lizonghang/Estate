@@ -144,6 +144,21 @@ class GlobalSetting(object):
             'first_icon': 'fa fa-suitcase'
         })
         self.remove_origin(menus, u'失物招领')
+        # 模块“访客预约”
+        menus.append({
+            'menus': [
+                {
+                    'url': u'/backend/xadmin/WeWeb/visitor/',
+                    'icon': 'fa fa-picture-o',
+                    'order': 1,
+                    'perm': 'WeWeb.view_visitor',
+                    'title': u'访客预约'
+                }],
+            'first_url': u'/backend/xadmin/WeWeb/visitor/',
+            'title': u'访客预约',
+            'first_icon': 'fa fa-cog'
+        })
+        self.remove_origin(menus, u'访客预约')
         # 模块“其他设置”
         menus.append({
             'menus': [
@@ -172,11 +187,13 @@ class RepairAdmin(object):
     list_display = ('loc', 'desc', 'user__userinfo__name', 'state')
     list_editable = ('state',)
     list_filter = ('state',)
+    refresh_times = (5, 10, 30, 60)
 
 
 class ActivityAdmin(object):
     list_display = ('name', 'loc', 'date', 'member', 'join', 'rest')
     exclude = ('join', 'rest')
+    refresh_times = (5, 10, 30, 60)
 
 
 class JoinUserAdmin(object):
@@ -186,6 +203,7 @@ class JoinUserAdmin(object):
 
 class MessageBoardAdmin(object):
     list_display = ('user__userinfo__name', 'message')
+    refresh_times = (5, 10, 30, 60)
 
 
 class PaymentAdmin(object):
@@ -193,6 +211,7 @@ class PaymentAdmin(object):
     exclude = ('paid',)
     list_editable = ('paid',)
     list_filter = ('user__userinfo__name', 'date', 'paid')
+    refresh_times = (5, 10, 30, 60)
 
 
 class UserInfoAdmin(object):
@@ -219,6 +238,7 @@ class DrinkOrderAdmin(object):
     exclude = ('state',)
     list_editable = ('state',)
     list_filter = ('drink', 'state')
+    refresh_times = (5, 10, 30, 60)
 
 
 class LoseAndFoundAdmin(object):
@@ -230,6 +250,14 @@ class LoseAndFoundAdmin(object):
 
 class BannerAdmin(object):
     list_display = ('image',)
+
+
+class VisitorAdmin(object):
+    list_display = ('code', 'master__userinfo__name', 'visitor', 'state')
+    exclude = ('state', 'master')
+    list_editable = ('state',)
+    list_filter = ('code', 'master__userinfo__name', 'visitor', 'state')
+    refresh_times = (5, 10, 30, 60)
 
 
 xadmin.site.register(CommAdminView, GlobalSetting)
@@ -245,3 +273,4 @@ xadmin.site.register(Drink, DrinkAdmin)
 xadmin.site.register(DrinkOrder, DrinkOrderAdmin)
 xadmin.site.register(LoseAndFound, LoseAndFoundAdmin)
 xadmin.site.register(Banner, BannerAdmin)
+xadmin.site.register(Visitor, VisitorAdmin)
