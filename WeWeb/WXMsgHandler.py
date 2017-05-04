@@ -1,4 +1,5 @@
 from WXEventHandler.Subscribe import SubscribeHandler
+from WXEventHandler.Vistor import VisitorHandler
 from bs4 import BeautifulSoup
 import config
 
@@ -21,7 +22,8 @@ class WXMsgHandler:
             if Event == 'CLICK':
                 EventKey = XMLdata.find('EventKey').get_text()
                 if EventKey == 'fangkeyuyue':
-                    return ''
+                    handler = VisitorHandler(XMLdata)
+                    return handler.get_message()
         elif MsgType == 'text':
             return ''
         return ''
