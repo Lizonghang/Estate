@@ -1,5 +1,6 @@
 # encoding: utf-8
 from xadmin.views import CommAdminView, BaseAdminView
+from xadmin.layout import Main, Side, Fieldset, Row, AppendedText
 from .models import *
 import xadmin
 

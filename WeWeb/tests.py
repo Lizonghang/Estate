@@ -9,7 +9,7 @@ def login(request):
     user = User.objects.get(username=openid)
     user.backend = 'django.contrib.auth.backends.ModelBackend'
     auth.login(request, user)
-    return HttpResponse(u'登录成功')
+    return HttpResponse({'err': 0, 'sessionid': request.session.session_key})
 
 
 def logout(request):
