@@ -277,3 +277,11 @@ class Visitor(models.Model):
     class Meta:
         verbose_name = '访客预约'
         verbose_name_plural = verbose_name
+
+
+class SessionToken(models.Model):
+    user = models.ForeignKey(User, verbose_name='用户')
+    token = models.CharField(u"Token", max_length=100, default='')
+
+    def __str__(self):
+        return self.user.username

@@ -9,6 +9,8 @@ from .models import *
 import config
 import hashlib
 import requests
+import uuid
+import wxtools
 
 
 def handler500(request):
@@ -48,8 +50,9 @@ def authorize(request):
         return HttpResponse()
 
     user, new = User.objects.get_or_create(username=openid)
-    user.backend = 'django.contrib.auth.backends.ModelBackend'
-    auth.login(request, user)
+    session, _ = SessionToken.objects.get_or_create(user=user)
+    session.token = wxtools.get_md5(str(uuid.uuid1()))
+    session.save()
 
     # 从state参数中取出url与自定义键值对,并生成合法的带查询参数的重定向url
     url = ''
@@ -66,10 +69,22 @@ def authorize(request):
         return JsonResponse({'err': 1, 'msg': u'参数没有提供url'})
 
     url += '?'
+    params['token'] = session.token
     for key in params.keys():
         url = url + '{key}={value}'.format(key=key, value=params[key]) + '&'
     url = url[:-1]
+    print u'页面跳转: ' + url
     return HttpResponseRedirect(url)
+
+
+@require_POST
+def login(request):
+    token = request.POST.get('token')
+    session = SessionToken.objects.get(token=token)
+    user = session.user
+    user.backend = 'django.contrib.auth.backends.ModelBackend'
+    auth.login(request, user)
+    return JsonResponse({'err': 0})
 
 
 @require_GET

@@ -2,6 +2,7 @@
 import config
 import requests
 import json
+import hashlib
 
 
 def get_access_token():
@@ -63,3 +64,10 @@ def send_template_message(data):
     api = 'https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=' + get_access_token()
     resp = requests.post(api, data=json.dumps(data)).json()
     return resp
+
+
+def get_md5(str):
+    h = hashlib.md5()
+    h.update(str)
+    return h.hexdigest()
+
