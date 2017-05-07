@@ -5,6 +5,7 @@ from WeWeb import views, tests
 test_map = [
     url(r'login/$', tests.login),
     url(r'logout/$', tests.logout),
+    url(r'whoami/$', tests.whoami),
 ]
 
 list_map = [

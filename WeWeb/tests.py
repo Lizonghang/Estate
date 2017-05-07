@@ -1,5 +1,5 @@
 # encoding: utf-8
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.contrib import auth
 from .models import *
 
@@ -15,3 +15,7 @@ def login(request):
 def logout(request):
     auth.logout(request)
     return HttpResponse(u'注销成功')
+
+
+def whoami(request):
+    return JsonResponse({'user': request.user.username})
