@@ -4,6 +4,8 @@
 
 * <a href="https://github.com/Lizonghang/Estate#模拟登录操作" style="text-decoration:none;">模拟登录操作</a>
 * <a href="https://github.com/Lizonghang/Estate#模拟登出操作" style="text-decoration:none;">模拟登出操作</a>
+* <a href="https://github.com/Lizonghang/Estate#测试登录状态" style="text-decoration:none;">测试登录状态</a>
+* <a href="https://github.com/Lizonghang/Estate#用户登录静默" style="text-decoration:none;">用户登录(静默)</a>
 * <a href="https://github.com/Lizonghang/Estate#获取轮播图链接" style="text-decoration:none;">获取轮播图链接</a>
 * <a href="https://github.com/Lizonghang/Estate#住户信息绑定" style="text-decoration:none;">住户信息绑定</a>
 * <a href="https://github.com/Lizonghang/Estate#提交物业报修工单" style="text-decoration:none;">提交物业报修工单</a>
@@ -34,6 +36,20 @@ GET http://www.desckie.com/api/weweb/test/login?openid=OPENID
 #### API
 ```
 GET http://www.desckie.com/api/weweb/test/logout/
+```
+
+## 测试登录状态
+
+#### API
+```
+GET http://www.desckie.com/api/weweb/test/whoami/
+```
+
+#### 返回数据
+```
+{
+  "user": "o26a00hNevT3Nrt2-yNk5Ln_6EPg"
+}
 ```
 
 ## 用户登录(静默)
