@@ -36,6 +36,37 @@ GET http://www.desckie.com/api/weweb/test/login?openid=OPENID
 GET http://www.desckie.com/api/weweb/test/logout/
 ```
 
+## 用户登录(静默)
+
+#### API
+```
+POST https://www.desckie.com/api/weweb/login/
+```
+
+#### 参数说明
+
+* <code>token</code>: 从公众号菜单进入的页面url中获得。
+
+由公众号菜单进入首页后地址为: 
+
+<code>http://www.desckie.com/#/?token=cad022c7b67a132c37cbaacbffa6e5bb</code>
+
+由公众号菜单进入物业保修页面地址为:
+
+<code>http://www.desckie.com/#/Need-fix?token=c1d26f833399c6813c7bcfe6a2b5d954</code>
+
+由公众号菜单进入物业缴费地址为:
+
+<code>http://www.desckie.com/#/Pay?token=bf5babcd43ff58e0a844b9f3749c7276</code>
+
+由公众号菜单进入留言板地址为:
+
+<code>http://www.desckie.com/#/Message?token=6a9f599d76cb46145a9859e98accbb9f</code>
+
+#### 返回数据
+
+* <code>sessionid</code>: 返回到浏览器cookie中。
+
 ## 获取轮播图链接
 
 #### API
