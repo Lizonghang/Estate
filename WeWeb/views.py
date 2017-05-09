@@ -194,6 +194,9 @@ def rent(request):
     except ObjectDoesNotExist:
         return JsonResponse({'err': 1, 'msg': u'该场地不在出租列表中'})
 
+    if rent.rented:
+        return JsonResponse({'err': 1, 'msg': u'该场地已被租用'})
+
     rent.user = user
     rent.rented = True
     rent.save()
