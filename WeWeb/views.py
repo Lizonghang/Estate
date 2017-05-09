@@ -119,12 +119,11 @@ def activities(request):
 def join(request):
     name = request.POST.get('name')
     user = request.user
-    print name
-    print user
     activity = Activity.objects.get(name=name)
     log, new = JoinUser.objects.get_or_create(user=user, activity=activity)
     if not new:
         return JsonResponse({'err': 1, 'msg': '您已报名该活动'})
+    print '\n1\n'
     activity.join = len(JoinUser.objects.filter(activity=activity))
     activity.save()
     return JsonResponse({'err': 0})
