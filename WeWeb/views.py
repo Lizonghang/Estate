@@ -80,12 +80,10 @@ def authorize(request):
 @require_GET
 def login(request):
     token = request.GET.get('token')
-    print token
     session = SessionToken.objects.get(token=token)
     user = session.user
     user.backend = 'django.contrib.auth.backends.ModelBackend'
     auth.login(request, user)
-    print request.user
     return JsonResponse({'err': 0})
 
 
@@ -121,6 +119,8 @@ def activities(request):
 def join(request):
     name = request.POST.get('name')
     user = request.user
+    print name
+    print user
     activity = Activity.objects.get(name=name)
     log, new = JoinUser.objects.get_or_create(user=user, activity=activity)
     if not new:
