@@ -77,9 +77,9 @@ def authorize(request):
     return HttpResponseRedirect(url)
 
 
-@require_GET
+@require_POST
 def login(request):
-    token = request.GET.get('token')
+    token = request.POST.get('token')
     session = SessionToken.objects.get(token=token)
     user = session.user
     user.backend = 'django.contrib.auth.backends.ModelBackend'
@@ -119,13 +119,7 @@ def activities(request):
 def join(request):
     name = request.POST.get('name')
     user = request.user
-    print len(name)
-    print len(name.strip())
-    try:
-        activity = Activity.objects.get(name=name)
-    except Exception, msg:
-        print msg
-        return HttpResponse()
+    activity = Activity.objects.get(name=name)
     log, new = JoinUser.objects.get_or_create(user=user, activity=activity)
     if not new:
         return JsonResponse({'err': 1, 'msg': '您已报名该活动'})
