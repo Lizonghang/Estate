@@ -77,9 +77,9 @@ def authorize(request):
     return HttpResponseRedirect(url)
 
 
-@require_POST
+@require_GET
 def login(request):
-    token = request.POST.get('token')
+    token = request.GET.get('token')
     session = SessionToken.objects.get(token=token)
     user = session.user
     user.backend = 'django.contrib.auth.backends.ModelBackend'
