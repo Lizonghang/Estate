@@ -80,10 +80,12 @@ def authorize(request):
 @require_GET
 def login(request):
     token = request.GET.get('token')
+    print token
     session = SessionToken.objects.get(token=token)
     user = session.user
     user.backend = 'django.contrib.auth.backends.ModelBackend'
     auth.login(request, user)
+    print request.user
     return JsonResponse({'err': 0})
 
 
