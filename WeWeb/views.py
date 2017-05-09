@@ -158,7 +158,10 @@ def bind(request):
 @login_required
 @require_GET
 def payinfo(request):
-    info = request.user.payment_set.get(date=default_month_now()).get_pay_info()
+    payment = request.user.payment_set.get(date=default_month_now())
+    info = None
+    if not payment.paid:
+        info = payment.get_pay_info()
     return JsonResponse({'err': 0, 'data': info})
 
 
