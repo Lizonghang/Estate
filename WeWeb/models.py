@@ -152,7 +152,7 @@ class Payment(models.Model):
         }
         wxtools.send_template_message(data)
 
-    def base_info(self):
+    def get_base_info(self):
         return {
             'name': self.user.userinfo.name,
             'room': self.user.userinfo.room,
