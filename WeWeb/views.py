@@ -159,8 +159,9 @@ def bind(request):
 @require_GET
 def payinfo(request):
     payment = request.user.payment_set.get(date=default_month_now())
-    info = None
-    if not payment.paid:
+    if payment.paid:
+        info = payment.get_base_info()
+    else:
         info = payment.get_pay_info()
     return JsonResponse({'err': 0, 'data': info})
 
