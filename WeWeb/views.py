@@ -183,7 +183,9 @@ def places(request):
 def rent(request):
     place = request.POST.get('place')
     user = request.user
-
+    print place
+    print len(place)
+    print len(place.strip())
     try:
         rent = Rent.objects.get(place=place)
     except ObjectDoesNotExist:
