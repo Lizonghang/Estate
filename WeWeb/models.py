@@ -152,6 +152,16 @@ class Payment(models.Model):
         }
         wxtools.send_template_message(data)
 
+    def base_info(self):
+        return {
+            'name': self.user.userinfo.name,
+            'room': self.user.userinfo.room,
+            'manage_price': 0,
+            'park_price': 0,
+            'other_price': 0,
+            'total_price': 0
+        }
+
     def get_pay_info(self):
         return {
             'name': self.user.userinfo.name,
