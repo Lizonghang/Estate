@@ -79,7 +79,9 @@ def authorize(request):
 
 @require_POST
 def login(request):
-    token = request.POST.get('token')
+    token = request.POST.get('token', '')
+    if not token:
+        return HttpResponse()
     session = SessionToken.objects.get(token=token)
     user = session.user
     user.backend = 'django.contrib.auth.backends.ModelBackend'
@@ -183,9 +185,7 @@ def places(request):
 def rent(request):
     place = request.POST.get('place')
     user = request.user
-    print place
-    print len(place)
-    print len(place.strip())
+    print request.body
     try:
         rent = Rent.objects.get(place=place)
     except ObjectDoesNotExist:
