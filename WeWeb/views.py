@@ -91,6 +91,7 @@ def login(request):
 
 @require_GET
 def banner(request):
+    print request.user.username
     banner_info = [image.get_image_url() for image in Banner.objects.all()]
     return JsonResponse({'err': 0, 'data': banner_info})
 
