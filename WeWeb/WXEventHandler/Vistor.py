@@ -17,7 +17,7 @@ class VisitorHandler:
             user.userinfo
         except ObjectDoesNotExist:
             return self._get_fail_response(fromUser, toUser)
-        Visitor.objects.create(master=user)
+        Visitor.objects.get_or_create(master=user, visitor='')
         return self._get_success_response(fromUser, toUser)
 
     def _parse(self, XMLdata):
@@ -59,7 +59,6 @@ class VisitorBindHandler:
     def get_message(self):
         fromUser, toUser, Content = self._parse(self.XMLdata)
         matches = re.findall(r'#(.*?)#', Content)
-        print matches
         if len(matches) != 1:
             return self._get_fail_response(fromUser, toUser, 1)
         user = User.objects.get(username=fromUser)

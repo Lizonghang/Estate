@@ -22,7 +22,6 @@ def login_require(request):
 
 
 def server_access(request):
-    print request.body
     token = config.wxToken
     params = request.GET
     args = [token, params['timestamp'], params['nonce']]
