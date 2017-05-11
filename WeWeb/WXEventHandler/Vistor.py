@@ -59,6 +59,7 @@ class VisitorBindHandler:
     def get_message(self):
         fromUser, toUser, Content = self._parse(self.XMLdata)
         matches = re.findall(r'#(.*?)#', Content)
+        print matches
         if len(matches) != 1:
             return self._get_fail_response(fromUser, toUser, 1)
         user = User.objects.get(username=fromUser)
