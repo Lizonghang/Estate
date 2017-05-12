@@ -39,7 +39,7 @@ class VisitorHandler:
 
     def _get_fail_response(self, fromUser, toUser):
         create_time = int(time.time())
-        bind = config.authorize_uri % 'url=http://www.desckie.com/#/'.replace('#', '')
+        bind = config.authorize_uri % 'url=http://www.desckie.com/#/Bind-info'.replace('#', '')
         ret_xml = """
         <xml>
          <ToUserName><![CDATA[""" + fromUser + """]]></ToUserName>
